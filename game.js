@@ -13,65 +13,50 @@ let availableQuestions = []
 // Add questions 
 let questions = [
     {
-        question: "what is 2 + 2?",
-        choice1: "2",
-        choice2: "4",
-        choice3: "6",
-        choice4: "10",
-        answer: 2,
+        question: "Commonly used data types do not include",
+        choice1: "Strings",
+        choice2: "Booleans",
+        choice3: "Alerts",
+        choice4: "Numbers",
+        answer: 3 ,
     },
     {
-        question: "what is 2 + 2?",
-        choice1: "2",
-        choice2: "4",
-        choice3: "6",
-        choice4: "10",
+        question: "The condition in an if / else statement is enclosed with _____",
+        choice1: "Quotes",
+        choice2: "Curly Brackets",
+        choice3: "Parenthesis",
+        choice4: "Square Brackets",
         answer: 3,
     },
     {
-        question: "what is 2 + 1?",
-        choice1: "2",
-        choice2: "4",
-        choice3: "6",
-        choice4: "10",
+        question: "Arrays in JavaScript can be used to store",
+        choice1: "Numbers",
+        choice2: "Other Arrays",
+        choice3: "Booleans",
+        choice4: "All of the above",
         answer: 4,
     },
     {
-        question: "what is 2 + 2?",
-        choice1: "2",
-        choice2: "4",
-        choice3: "6",
-        choice4: "10",
-        answer: 2,
+        question: "String values must be enclosed within_____ when being assigned to variables",
+        choice1: "Commas",
+        choice2: "Curly Brackets",
+        choice3: "Quotes",
+        choice4: "Parenthesis",
+        answer: ,
     },
     {
-        question: "what is 2 + 11?",
-        choice1: "2",
-        choice2: "4",
-        choice3: "6",
-        choice4: "10",
-        answer: 1,
-    },
-    {
-        question: "what is 2 + 10?",
-        choice1: "2",
-        choice2: "4",
-        choice3: "6",
-        choice4: "10",
-        answer: 3,
-    },
-    {
-        question: "what is 2 + 3?",
-        choice1: "2",
-        choice2: "4",
-        choice3: "6",
-        choice4: "10",
+        question: "A very useful tool used during development and debugging for printing content to debugger is:",
+        choice1: "JavaScript",
+        choice2: "Terminal/Bash",
+        choice3: "For Loops",
+        choice4: "Console.Log",
         answer: 4,
     },
+    
 ];
 
-const SCORE_POINTS = 100
-const MAX_QUESTIONS = 7 //change once it has been determined how many questions we want 
+const SCORE_POINTS = 20
+const MAX_QUESTIONS = 5 //change once it has been determined how many questions we want 
 
 // start quiz function 
 
