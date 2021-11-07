@@ -26,7 +26,7 @@ let questions = [
         choice2: "4",
         choice3: "6",
         choice4: "10",
-        answer: 2,
+        answer: 3,
     },
     {
         question: "what is 2 + 1?",
@@ -34,7 +34,7 @@ let questions = [
         choice2: "4",
         choice3: "6",
         choice4: "10",
-        answer: 2,
+        answer: 4,
     },
     {
         question: "what is 2 + 2?",
@@ -50,7 +50,7 @@ let questions = [
         choice2: "4",
         choice3: "6",
         choice4: "10",
-        answer: 2,
+        answer: 1,
     },
     {
         question: "what is 2 + 10?",
@@ -58,7 +58,7 @@ let questions = [
         choice2: "4",
         choice3: "6",
         choice4: "10",
-        answer: 2,
+        answer: 3,
     },
     {
         question: "what is 2 + 3?",
@@ -66,7 +66,7 @@ let questions = [
         choice2: "4",
         choice3: "6",
         choice4: "10",
-        answer: 2,
+        answer: 4,
     },
 ];
 
@@ -107,24 +107,30 @@ getNewQuestion = () => {
 
     acceptingAnswers = true
 };
-
+// function for choosing answers 
 choices.forEach(choice => {
     choice.addEventListener('click', e => {
-        if(!acceptingAnswers) 
-        return
+        if(!acceptingAnswers) return
+
         acceptingAnswers = false
         const selectedChoice = e.target
-        const selectedAnswer = selectedChoice.dataset('number')
+        const selectedAnswer = selectedChoice.dataset['number']
 
-        let classToApply = selectedAnswer == currentQuestion.answer ? 'correct' :
-        'incorrect'
+        let classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect'
 
-        if(classToApply === 'correct')
+        if(classToApply === 'correct') {
             incrementScore(SCORE_POINTS)
+        }
 
-            selectedChoice.parentElement.classList.add(classToApply)
+        selectedChoice.parentElement.classList.add(classToApply)
+
+        setTimeout(() => {
+            selectedChoice.parentElement.classList.remove(classToApply)
+            getNewQuestion()
+
+        }, 1000)
     })
-});
+})
 
 incrementScore = num => {
     score +=num
