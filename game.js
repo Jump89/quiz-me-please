@@ -1,24 +1,50 @@
-const question = document.querySelector("#question");
-const choices = document.querySelector(".choice-text");
-const progressText = document.querySelectorAll("#progressText");
-const scoreText = document.querySelector("#score");
-const progressBarFull = document.querySelector("#progressBarFull");
+const question = document.querySelector('#question');
+const choices = Array.from(document.querySelectorAll('.choice-text'));
+const progressText = document.querySelector('#progressText');
+const scoreText = document.querySelector('#score');
+const progressBarFull = document.querySelector('#progressBarFull');
+const startTimer = 15; /// change
+
 
 let currentQuestion = {}
 let acceptingAnswers = true
 let score = 0
 let questionCounter = 0
 let availableQuestions = []
+let time = startTimer;
 
-// Add questions 
+
+
+// timer fFunction that subtracts  time from wrong answers 
+(function() {
+    var sec = 15;
+    function startTimer(){
+        console.log('timer suppose to go')
+        var timer = setInterval(function(){
+            sec--;
+            document.getElementById('time').innerHTML='00:'+sec;
+            if (sec < 0) {
+                clearInterval(timer);
+                alert("Time is up!")
+            }
+        }, 1000);
+    }
+    document.getElementById('question').addEventListener('click', function() {
+        sec -= 5;
+        document.getElementById('time').innerHTML='00:'+sec;
+    });
+    startTimer();
+})();
+
 let questions = [
-    {
+    {  
         question: "Commonly used data types do not include",
         choice1: "Strings",
         choice2: "Booleans",
         choice3: "Alerts",
         choice4: "Numbers",
-        answer: 3 ,
+        answer: 3 
+
     },
     {
         question: "The condition in an if / else statement is enclosed with _____",
@@ -26,7 +52,7 @@ let questions = [
         choice2: "Curly Brackets",
         choice3: "Parenthesis",
         choice4: "Square Brackets",
-        answer: 3,
+        answer: 3
     },
     {
         question: "Arrays in JavaScript can be used to store",
@@ -42,7 +68,7 @@ let questions = [
         choice2: "Curly Brackets",
         choice3: "Quotes",
         choice4: "Parenthesis",
-        answer: ,
+        answer: 4
     },
     {
         question: "A very useful tool used during development and debugging for printing content to debugger is:",
@@ -50,49 +76,47 @@ let questions = [
         choice2: "Terminal/Bash",
         choice3: "For Loops",
         choice4: "Console.Log",
-        answer: 4,
-    },
-    
-];
+        answer: 4
+    }
+]
+ // start quiz function 
 
 const SCORE_POINTS = 20
-const MAX_QUESTIONS = 5 //change once it has been determined how many questions we want 
-
-// start quiz function 
+const MAX_QUESTIONS = 5
 
 startGame = () => {
     questionCounter = 0
     score = 0
     availableQuestions = [...questions] // spread operator to get all values from questions
     getNewQuestion()
-
-};
-// created new function to keep track of scores and sends guest to new page 
+}
+ // created new function to keep track of scores and sends guest to new page
 getNewQuestion = () => {
-    if (availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
-        localStorage.setItem("mostRecentScore", score)
+    if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
+        localStorage.setItem('mostRecentScore', score)
 
-        return window.location.assign("/end.html")
+        return window.location.assign('/end.html')
     }
 
     questionCounter++
     progressText.innerText = `Question ${questionCounter} of ${MAX_QUESTIONS}` // increment's questions by 1 
-    progressBarFull.getElementsByClassName.width = `${(questionCounter/MAX_QUESTIONS) * 100}%` // calculate which question user is on and percentage user is on 
-
+    progressBarFull.style.width = `${(questionCounter/MAX_QUESTIONS) * 20}%`  // calculate which question user is on and percentage user is on 
+    
     const questionsIndex = Math.floor(Math.random() * availableQuestions.length) // calculate value of question index 
-    currentQuestion = availableQuestions[questionsIndex] // keep track of question user is on 
+    currentQuestion = availableQuestions[questionsIndex]  // keep track of question user is on 
     question.innerText = currentQuestion.question // which question to ask 
 
+
     choices.forEach(choice => {
-        const number = choice.dataset('number') // will know what user has clicked on 
-        choice.innerText = currentQuestion['choice' + number] 
+        const number = choice.dataset['number'] // will know what user has clicked on 
+        choice.innerText = currentQuestion['choice' + number]
     })
 
     availableQuestions.splice(questionsIndex, 1)
 
     acceptingAnswers = true
-};
-// function for choosing answers 
+}
+
 choices.forEach(choice => {
     choice.addEventListener('click', e => {
         if(!acceptingAnswers) return
@@ -119,7 +143,7 @@ choices.forEach(choice => {
 
 incrementScore = num => {
     score +=num
-    score.Text.innerText = score
-};
+    scoreText.innerText = score
+}
 
-startGame();
+startGame()

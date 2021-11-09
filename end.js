@@ -12,7 +12,7 @@ finalScore.innerText = mostRecentScore
 username.addEventListener('keyup', () => {  // keyup whenever we press the key it reinable save btn
     saveScoreBtn.disabled = !username.value
 
-});
+})
 // function to get high score and save to local storage 
 savedHighScore = e => {
     e.preventDefault()
