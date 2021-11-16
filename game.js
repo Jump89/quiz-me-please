@@ -3,36 +3,38 @@ const choices = Array.from(document.querySelectorAll('.choice-text'));
 const progressText = document.querySelector('#progressText');
 const scoreText = document.querySelector('#score');
 const progressBarFull = document.querySelector('#progressBarFull');
-const startTimer = 15; /// change
+const startTimer = 20; /// change
 
 
 let currentQuestion = {}
-let acceptingAnswers = true
-let score = 0
-let questionCounter = 0
-let availableQuestions = []
+let acceptingAnswers = true;
+let score = 0;
+let questionCounter = 0;
+let availableQuestions = [];
 let time = startTimer;
 
-
+var sec = 20;
 
 // timer fFunction that subtracts  time from wrong answers 
 (function() {
-    var sec = 15;
+
     function startTimer(){
         console.log('timer suppose to go')
         var timer = setInterval(function(){
             sec--;
             document.getElementById('time').innerHTML='00:'+sec;
-            if (sec < 0) {
+            if (sec <= 0) {
                 clearInterval(timer);
-                alert("Time is up!")
+                alert("Time is up!");
+                return window.location.assign('/end.html')
+
             }
         }, 1000);
     }
-    document.getElementById('question').addEventListener('click', function() {
-        sec -= 5;
-        document.getElementById('time').innerHTML='00:'+sec;
-    });
+    // document.getElementById('question').addEventListener('click', function() {
+    //     sec -= 5;
+    //     document.getElementById('time').innerHTML='00:'+sec;
+    // });
     startTimer();
 })();
 
@@ -88,11 +90,11 @@ startGame = () => {
     questionCounter = 0
     score = 0
     availableQuestions = [...questions] // spread operator to get all values from questions
-    getNewQuestion()
+    getNewQuestion();
 }
  // created new function to keep track of scores and sends guest to new page
 getNewQuestion = () => {
-    if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
+    if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS || sec === 0) {
         localStorage.setItem('mostRecentScore', score)
 
         return window.location.assign('/end.html')
@@ -130,20 +132,23 @@ choices.forEach(choice => {
         if(classToApply === 'correct') {
             incrementScore(SCORE_POINTS)
         }
+        else if (classToApply === 'incorrect'){
+            sec -= 5;
+        }
 
         selectedChoice.parentElement.classList.add(classToApply)
 
         setTimeout(() => {
             selectedChoice.parentElement.classList.remove(classToApply)
-            getNewQuestion()
+            getNewQuestion();
 
         }, 1000)
-    })
-})
+    });
+});
 
 incrementScore = num => {
     score +=num
     scoreText.innerText = score
-}
+};
 
 startGame()
