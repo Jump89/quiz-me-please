@@ -1,6 +1,7 @@
 const username = document.querySelector("#username")  // get the username from form in end.html 
 const saveScoreBtn = document.querySelector("#saveScoreBtn")
 const mostRecentScore = localStorage.getItem("mostRecentScore")
+const finalScore = document.querySelector("#finalScore");
 
 // line 1 and line 7 we use on line 21 to create userDetails object to put on local storage 
 
@@ -8,7 +9,7 @@ let highScores = JSON.parse(localStorage.getItem('mostRecentScore')); // get the
 
 let allUsers = [];     
 
-finalScore.innerText = mostRecentScore 
+finalScore.innerText = mostRecentScore;
 
 username.addEventListener('keyup', () => {  // keyup whenever we press the key it reinable save btn
     saveScoreBtn.disabled = !username.value

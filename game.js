@@ -94,6 +94,7 @@ startGame = () => {
 getNewQuestion = () => {
     if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS || sec === 0) {
         localStorage.setItem('mostRecentScore', score)
+        console.log("this is our score!", score);
 
         return window.location.assign('/end.html')
     }
@@ -147,6 +148,7 @@ choices.forEach(choice => {
 incrementScore = num => {   // change the score 
     score +=num
     scoreText.innerText = score
+    console.log("this is our score", score);
 };
 
 startGame()
