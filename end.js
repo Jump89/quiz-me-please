@@ -1,24 +1,20 @@
-const username = document.querySelector("#username")
+const username = document.querySelector("#username")  // get the username from form in end.html 
 const saveScoreBtn = document.querySelector("#saveScoreBtn")
-// const finalScore = document.querySelector("#finalScore")
 const mostRecentScore = localStorage.getItem("mostRecentScore")
 
+// line 1 and line 7 we use on line 21 to create userDetails object to put on local storage 
 
-//const highScores = JSON.parse(localStorage.getItem('highScores')) || [] // local storage string
-let highScores = JSON.parse(localStorage.getItem('mostRecentScore')); // local storage string
- console.log(highScores)
- 
-let allUsers = [];
+let highScores = JSON.parse(localStorage.getItem('mostRecentScore')); // get the high score form local storage 
 
-// const MAX_HIGH_SCORES = 5
+let allUsers = [];     
 
-finalScore.innerText = mostRecentScore
+finalScore.innerText = mostRecentScore 
 
 username.addEventListener('keyup', () => {  // keyup whenever we press the key it reinable save btn
     saveScoreBtn.disabled = !username.value
 
 })
-// function to get high score and save to local storage 
+// function to save user name and score to local storage  
 const saveHighScore = function(e) {
     e.preventDefault();
 
@@ -41,7 +37,6 @@ const saveHighScore = function(e) {
     }
     
 
-    //  localStorage.setItem("highScores", JSON.stringify(highScores))
-     window.location.assign('highscores.html');
+     window.location.assign('highscores.html'); /// sends user to highscore screen 
 };
 

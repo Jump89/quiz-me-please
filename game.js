@@ -31,13 +31,11 @@ var sec = 20;
             }
         }, 1000);
     }
-    // document.getElementById('question').addEventListener('click', function() {
-    //     sec -= 5;
-    //     document.getElementById('time').innerHTML='00:'+sec;
-    // });
+  
     startTimer();
 })();
 
+// array of questions 
 let questions = [
     {  
         question: "Commonly used data types do not include",
@@ -118,9 +116,9 @@ getNewQuestion = () => {
 
     acceptingAnswers = true
 }
-
+// function for correct and incorrect -
 choices.forEach(choice => {
-    choice.addEventListener('click', e => {
+    choice.addEventListener('click', e => { // click event for choices 
         if(!acceptingAnswers) return
 
         acceptingAnswers = false
@@ -132,7 +130,7 @@ choices.forEach(choice => {
         if(classToApply === 'correct') {
             incrementScore(SCORE_POINTS)
         }
-        else if (classToApply === 'incorrect'){
+        else if (classToApply === 'incorrect'){  /// if answer is incorrect subtract - 5 seconds from time 
             sec -= 5;
         }
 
@@ -146,7 +144,7 @@ choices.forEach(choice => {
     });
 });
 
-incrementScore = num => {
+incrementScore = num => {   // change the score 
     score +=num
     scoreText.innerText = score
 };
