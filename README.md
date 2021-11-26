@@ -21,12 +21,12 @@ If user gets question incorrect -5 seconds is subtracted from time left
 Once time reaches zero quiz will end high score can be saved on the following page 
 User can then replay or view high score 
 
-### My code 
+### My Quiz
 I created 4 pages 
 * A landing page which features play and view high score 
 * A quiz page where user can play and take the quiz 
 * A page where user can see their score, reply quiz , view high score
-* A high score plage where user can see previous high scores
+* A high score plage where user can see previous high scores and return to landing page 
 
 ### Deployment
 * Has live and git hub url
@@ -37,5 +37,5 @@ I created 4 pages
 ## WebPage Url - https://jump89.github.io/quiz-me-please/
 
 ## Screen Shot 
-![](/Users/cioramos/development/quiz-me-please/assests/image/screenshot-landing.png)
+![]("")
 
