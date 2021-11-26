@@ -26,7 +26,7 @@ var sec = 20;
             if (sec <= 0) {
                 clearInterval(timer);
                 alert("Time is up!");
-                return window.location.assign('/end.html')
+                return window.location.assign('end.html')
 
             }
         }, 1000);
