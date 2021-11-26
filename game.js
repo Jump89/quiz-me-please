@@ -96,7 +96,7 @@ getNewQuestion = () => {
         localStorage.setItem('mostRecentScore', score)
         console.log("this is our score!", score);
 
-        return window.location.assign('/end.html')
+        return window.location.assign('end.html')
     }
 
     questionCounter++
